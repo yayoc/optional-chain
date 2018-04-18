@@ -1,4 +1,4 @@
-# optional-chain
+# optional-chain [![travis-ci](https://travis-ci.org/yayoc/optional-chain.svg?branch=master)](https://travis-ci.org/yayoc/optional-chain)
 
 Optional chaining implementation in TypeScript.  
 Uses [`option type`](https://en.wikipedia.org/wiki/Option_type)
