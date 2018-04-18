@@ -1,6 +1,7 @@
 # optional-chain
 
-Optional chaining implementation in TypeScript.
+Optional chaining implementation in TypeScript.  
+Uses [`option type`](https://en.wikipedia.org/wiki/Option_type)
 
 ## Install
 
@@ -37,24 +38,85 @@ An instance of `Option` can be constructed with a value for the souce of `T`. `O
 
 #### `.k(name: string)`
 
+```typescript
+type User = {
+  name: string;
+  sns: SNS;
+  followers: User[];
+};
+
+type SNS = {
+  twitter?: {
+    username: string;
+  };
+  facebook?: {
+    url: string;
+  };
+};
+
+const user: User = {
+  name: "yayoc",
+  sns: {
+    twitter: {
+      username: "@yayoc_"
+    }
+  },
+  followers: []
+};
+const optionalUser = optional(user);
+optionalUser.k("name"); // Option<string>
+optionalUser.k("sns"); // Option<{twitter: { username: string }}>
+optionalUser.k("sns").k("facebook"); // None
+optionalUser.k("foo"); // compile error
+```
+
 Returns a `Option<T>` narrowed by specified property of Object.
 
 #### `.i(index: number)`
 
-Returns a `Option<T>` narrowed by specified index of Array.
+Returns a `Option<T>` narrowed by specified index of Array. If index is not in array, this returns `Option<undefined>`.
+
+```typescript
+optionalUser
+  .k("followers")
+  .i(0)
+  .k("name"); // None
+```
 
 #### `.get()`
 
-Returns `Some` value of `Option`.
+Returns a value of `Option`.
+
+```typescript
+optionalUser.k("name").get(); // yayoc
+```
 
 #### `.match({ some: T => any, none: T => any })`
 
 A public method of `Option` to do pattern matching.
 If target `Option` is `Some` type, this funciton returns a result of given `some` function. Otherwise, this function returns a result of given `none` function.
 
+```typescript
+optionalUser
+  .k("sns")
+  .k("twitter")
+  .match({
+    some: v => v,
+    none: v => `there is no account: ${v}`
+  }); // @yayoc_
+```
+
 #### `.getOrElse(value: any)`
 
 A public method to return `T` value when the instance contains some value. Otherwise, this function will return given value.
+
+```typescript
+optionalUser
+  .k("sns")
+  .k("facebook")
+  .k("url")
+  .getOrElse("https://facebook.com"); // https://facebook.com
+```
 
 ## Credits
 
