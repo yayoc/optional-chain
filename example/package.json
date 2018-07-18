@@ -1,0 +1,14 @@
+{
+  "name": "example-optional-chain",
+  "version": "0.0.1",
+  "description": "An example of optional-chain",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "yayoc <hi@yayoc.com> (http://yayoc.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}
