@@ -7,6 +7,9 @@ export const optional = <T>(value: T): Option<T> => {
   return new Option(value);
 };
 
+export type Diff<T, U> = T extends U ? never : T;
+export type NonNullable<T> = Diff<T, null | undefined>;
+
 export class Option<T> {
   readonly value: T;
   readonly type: OptionType;
@@ -18,12 +21,13 @@ export class Option<T> {
       this.type = OptionType.Some;
     }
   }
-  public k<K extends keyof T>(key: K): Option<T[K]> {
+  public k<K extends keyof T>(key: K): Option<NonNullable<T[K]>> {
     if (this.type === OptionType.None) {
-      return new Option(undefined as any);
+      return new Option(undefined) as any;
     }
-    return new Option(this.value[key]);
+    return new Option(this.value[key]) as any;
   }
+
   public i: T extends Array<infer I>
     ? (index: number) => Option<I>
     : Option<undefined>;
