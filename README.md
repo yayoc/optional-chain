@@ -14,7 +14,7 @@ npm install optional-chain
 ```typescript
 import { optional } from "optional-chain";
 
-type User {
+type User = {
   name?: {
     first: string
   }
