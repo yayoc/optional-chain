@@ -5,7 +5,7 @@ Uses [`option type`](https://en.wikipedia.org/wiki/Option_type)
 
 ## Requirement
 
-This library requries TS 2.8+ version to use [conditional type](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html)
+This library requires TS 2.8+ version to use [conditional type](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html)
 
 ## Install
 
@@ -18,7 +18,7 @@ npm install optional-chain
 ```typescript
 import { optional } from "optional-chain";
 
-type User {
+type User = {
   name?: {
     first: string
   }
