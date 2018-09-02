@@ -3,8 +3,9 @@ export enum OptionType {
   Some
 }
 
-export const optional = <T>(value: T): Option<T> => {
-  return new Option(value);
+// Use NonNullable type to avoid returning "never type" when accessing optional properties
+export const optional = <T>(value: T): Option<NonNullable<T>> => {
+  return new Option(value) as any;
 };
 
 export type Diff<T, U> = T extends U ? never : T;

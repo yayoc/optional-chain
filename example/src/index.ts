@@ -18,3 +18,13 @@ optionalUser
   .k("gender")
   .k("id")
   .get();
+
+type Foo = {
+  bar?: {
+    str: string;
+  };
+};
+
+const foo: Foo = {};
+const optionalFoo = optional(foo.bar);
+optionalFoo.k("str");
