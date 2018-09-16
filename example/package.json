@@ -9,6 +9,6 @@
   "author": "yayoc <hi@yayoc.com> (http://yayoc.com)",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.3"
   }
 }
