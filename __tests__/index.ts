@@ -54,8 +54,12 @@ describe("Option", () => {
       expect(optionalObj.i(100).type).toBe(OptionType.None);
     });
     it("can be called after k function", () => {
-      const obj = {
-        a: [0, 1, 2]
+      type ArrObj = {
+        a: number[]
+        b?: number[]
+      }
+      const obj: ArrObj = {
+        a: [0, 1, 2],
       };
       const optionalObj = new Option(obj);
       expect(
@@ -70,6 +74,12 @@ describe("Option", () => {
           .i(1)
           .get()
       ).toBe(1);
+      expect(
+        optionalObj
+          .k("b")
+          .i(0)
+          .get()
+      ).toBe(undefined)
     });
   });
 

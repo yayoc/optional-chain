@@ -51,7 +51,7 @@ export class Option<T> {
 }
 
 Option.prototype.i = function<U>(index: number): Option<U> {
-  if (this.value[index] === undefined) {
+  if (this.value === undefined || this.value[index] === undefined) {
     return new Option(undefined as any);
   }
   return new Option(this.value[index]);
