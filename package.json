@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/yayoc/optional-chain#readme",
   "devDependencies": {
-    "@types/jest": "^23.3.2",
+    "@types/jest": "^24.0.0",
     "jest": "^23.6.0",
     "ts-jest": "^23.1.4",
     "typescript": "^3.0.3"
